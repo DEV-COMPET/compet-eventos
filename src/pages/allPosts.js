@@ -1,4 +1,4 @@
-import clientPromise from "@lib/mongo/index";
+import clientPromise from "@/app/database/index";
 
 export default function allPosts({ posts }) {
     return (
