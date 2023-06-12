@@ -6,9 +6,9 @@ const options ={}
 
 let client = new MongoClient(url,options)
 let clientPromise = client.connect()
+*/
 
-export default clientPromise
-*/ 
+
 
 import mongoose from 'mongoose';
 
@@ -23,5 +23,5 @@ async function connectDB() {
     console.error('Failed to connect to MongoDB', error);
   }
 }
-
-export default connectDB;
+//const connection = {connectDB,clientPromise}
+export default connectDB ;

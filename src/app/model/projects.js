@@ -2,12 +2,13 @@
 
 import mongoose from 'mongoose';
 
-const projectSchema = new mongoose.Schema({
+const projectInterSchema = new mongoose.Schema({
   title: String,
-  slug:String,
+  author:String,
   description:String,
+  image:String
 },{collection:'projects'});
 
-const Project = mongoose.models.Projects|| mongoose.model('Projects', projectSchema);
+const Project = mongoose.models.ProjectsInter|| mongoose.model('ProjectsInter', projectInterSchema);
 
 export default Project;

@@ -106,3 +106,25 @@ a {
   }
 }
 
+.header-main{
+  padding:10px;
+  
+}
+
+.postcards{
+  background:white;
+  box-shadow: 0 0 10px rgba(0,0,0,0.2);
+  padding:10px;
+  transition: transform 100ms ease-in-out;
+  border-radius: 10px;
+}
+.form-input{
+  padding:30px;
+  border:solid black;
+  border-radius: 20px;
+  font-weight:bold;
+  font-size:20px;
+  width:90%;
+  margin-left:5%;
+  background-color: aliceblue;
+}
