@@ -7,6 +7,7 @@ import '@app/page.module.css'
 import {useMutation,useQueryClient} from 'react-query'
 import {addProject,getProjects} from '@app/lib/helpers'
 import Header from '@app/components/Header'
+import styles from '@app/page.module.css'
 
 const formReducer = (state,event) =>{
   return{
@@ -22,26 +23,21 @@ const LoginPage = ({children}) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     const file = e.target.image.files[0]
-    console.log('arquivo',file)
     const base64 = await convertToBase64(file)
-    console.log('base64',base64)
     formData.image = base64
-    console.log(formData)
     if(Object.keys(formData).length==0)return console.log("No formData")
-    //let {title,slug,description} = formData
-    
     addProject(formData)
-   
   };
 
   
   return (
-    <div>
+    <div className={styles.center}>
       <Header/>
-      <h1>Cadastro Projeto</h1>
-      <form className='form-input' onSubmit={handleSubmit} method='post' >
+      
+      <form className={styles.form_input} onSubmit={handleSubmit} method='post' >
+        <h3>Cadastro Projeto</h3>
         <div>
-          <label>Title:</label>
+          <label>Titulo:</label>
           <input
             type="text"
             name="title"
@@ -49,21 +45,14 @@ const LoginPage = ({children}) => {
           />
         </div>
         <div>
-          <label>Slug:</label>
+          <label>Autor:</label>
           <input
             type="text"
             name="author"
             onChange={setFormData}
           />
         </div>
-        <div>
-          <label>Description:</label>
-          <input
-            type="text"
-            name="description"
-            onChange={setFormData}
-          />
-        </div>
+        
         <div>
           <label>Imagem de apresentação:</label>
           <input
@@ -73,6 +62,15 @@ const LoginPage = ({children}) => {
             accept='.jpg,.jpeg,.png'
             onChange={setFormData}
           />
+        </div>
+        <div>
+          
+          <textarea rows="10" cols="50"
+          type="text"
+          name="description"
+          onChange={setFormData}
+          >Digite a descrição do projeto
+          </textarea>
         </div>
      
         <input type="submit" value="confirmar"/>

@@ -4,32 +4,41 @@ import {useQuery} from 'react-query'
 import {useState} from 'react'
 import Header from '@app/components/Header'
 import PostCard from '@/app/components/ProjectCard'
+import page from '@app/page.module.css'
+import Link from 'next/link'
+
 
 export default function AllProjects({data}){
+
+  const handler = async (e)=>{
+    e.preventDefault();
+    console.log(e.target.editProject.value)
+  }
+  /*{`/editarProjeto/title=${projects.title}`}*/
     
-    return(<div>
-        <div>
-            <Header/>
-            <h2>Projects:</h2>
+    return(
+  
+        <div className={page.center}>
+          
+          <Header/>
+            <h2>Projetos em Exibição</h2>
             {
                 data.map((projects,i) =>(
-                  <div key={i}>
+                  <div className={page.container} key={i}>
+                      <div>
+                        <img src={projects.image} className={page.photos_content} alt='imagem-projeto'/>
+                      </div>
                         <h2>{projects.title}</h2>
                         <p>{projects.description}</p>
-                        <img src={projects.image} alt='imagem-projeto'/>
+                        <Link href={`/editarProjeto/${projects.title}`}>Editar</Link>
+                        
                     </div>
                 )
-                  
-                  /*<PostCard
-                     key = {i}
-                     title = {projects.title}
-                     cover = {projects.cover}
-                     body = {projects.body}/>*/
                     
                 )
             }
         </div>
-    </div>
+        
     )
 }
 

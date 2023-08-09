@@ -6,7 +6,7 @@ const projectInterSchema = new mongoose.Schema({
   title: String,
   author:String,
   description:String,
-  image:String
+  image:String,
 },{collection:'projects'});
 
 const Project = mongoose.models.ProjectsInter|| mongoose.model('ProjectsInter', projectInterSchema);
